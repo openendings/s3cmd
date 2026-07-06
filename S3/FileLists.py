@@ -339,6 +339,7 @@ def fetch_local_list(args, is_src = False, recursive = None, with_dirs=False):
         return loc_list, single_file
 
     def _maintain_cache(cache, local_list):
+        debug(u"Maintaining cache...")
         # if getting the file list from files_from, it is going to be
         # a subset of the actual tree.  We should not purge content
         # outside of that subset as we don't know if it's valid or
@@ -356,6 +357,8 @@ def fetch_local_list(args, is_src = False, recursive = None, with_dirs=False):
                 cache.unmark_for_purge(f_info['dev'], inode, f_info['mtime'],
                                        f_info['size'])
             cache.purge()
+        if cfg.cache_file:
+            # TODO save
             cache.save(cfg.cache_file)
 
     cfg = Config()
