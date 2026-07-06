@@ -946,6 +946,7 @@ class S3(object):
 
     def object_copy(self, src_uri, dst_uri, extra_headers=None,
                     src_size=None, extra_label="", replace_meta=False):
+        debug(u"object_copy(%s, %s)" % (src_uri, dest_uri))
         """Remote copy an object and eventually set metadata
 
         Note: A little memo description of the nightmare for performance here:
