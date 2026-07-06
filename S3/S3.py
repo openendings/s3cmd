@@ -1034,6 +1034,9 @@ class S3(object):
         # Following meta data are updated even in COPY by aws
         if self.config.acl_public:
             headers["x-amz-acl"] = "public-read"
+        else:
+            # TODO: check tests
+            headers["x-amz-acl"] = "private"
 
         headers["x-amz-storage-class"] = self.storage_class()
 
