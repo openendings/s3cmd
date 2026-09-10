@@ -946,6 +946,7 @@ class S3(object):
 
     def object_copy(self, src_uri, dst_uri, extra_headers=None,
                     src_size=None, extra_label="", replace_meta=False):
+        debug(u"object_copy(%s, %s)" % (src_uri, dest_uri))
         """Remote copy an object and eventually set metadata
 
         Note: A little memo description of the nightmare for performance here:
@@ -1034,6 +1035,9 @@ class S3(object):
         # Following meta data are updated even in COPY by aws
         if self.config.acl_public:
             headers["x-amz-acl"] = "public-read"
+        else:
+            # TODO: check tests
+            headers["x-amz-acl"] = "private"
 
         headers["x-amz-storage-class"] = self.storage_class()
 
