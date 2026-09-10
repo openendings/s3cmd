@@ -65,6 +65,10 @@ setup(
     ## Content description
     name=S3.PkgInfo.package,
     version=S3.PkgInfo.version,
+    setuptools_git_versioning={
+        "enabled": True,
+    },
+    setup_requires=["setuptools-git-versioning>=3.0,<4"],
     packages=['S3'],
     scripts=['s3cmd'],
     data_files=data_files,
